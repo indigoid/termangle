@@ -1,0 +1,22 @@
+#!/bin/sh
+
+termangle_components="primitives colours"
+
+termangle_load() {
+    local path=.
+    if [ -L "$1" ] ; then
+        local target="$(readlink "$1")"
+        local home="$(dirname -- "$target")"
+        if [ -d "$home" ] ; then
+            path="$home"
+        fi
+    fi
+    for component in $termangle_components ; do
+        local file="$path/termangle-${component}.sh"
+        if [ -f "$file" ] ; then
+            source "$file"
+        fi
+    done
+}
+
+termangle_load "$_bashrcd_file"
