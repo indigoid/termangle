@@ -13,7 +13,7 @@ function termangle_bgcolour() {
 }
 
 function termangle_bothcolour() {
-    termangle_fgcolour "$1"
+    termangle_fgcolour "$2"
     termangle_bgcolour "$1"
 }
 
